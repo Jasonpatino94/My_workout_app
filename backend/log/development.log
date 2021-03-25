@@ -1,0 +1,526 @@
+  [1m[35m (12.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210324043053)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210324043053"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateWorkouts (20210324043201)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "workouts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "weight" integer, "reps" integer, "sets" integer, "workout_session_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210324043201"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateWorkoutSessions (20210324043211)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "workout_sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210324043211"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-03-24 19:55:21.112927"], ["updated_at", "2021-03-24 19:55:21.112927"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Destroy (5.5ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mWorkoutSession Destroy (4.9ms)[0m  [1m[31mDELETE FROM "workout_sessions"[0m
+  [1m[36mWorkout Destroy (4.1ms)[0m  [1m[31mDELETE FROM "workouts"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Jason"], ["password_digest", "$2a$12$wJ5tWF7yeNFP4vCFaBcPNeOaBJI371k1etuUKXuTF4/V6PXpItdri"], ["created_at", "2021-03-24 19:57:14.257782"], ["updated_at", "2021-03-24 19:57:14.257782"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Mike"], ["password_digest", "$2a$12$cyUNzyMGaASPSsUSfGA3wuHe/dqkpj2sL0QLgT7fJX2O7lMfmFtKW"], ["created_at", "2021-03-24 19:57:14.439946"], ["updated_at", "2021-03-24 19:57:14.439946"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Joe"], ["password_digest", "$2a$12$sMY3X/p4rk6q97tO8nFNbuIhjZlZKEDwvFeSKArmzLZPdNCXdkdlO"], ["created_at", "2021-03-24 19:57:14.619238"], ["updated_at", "2021-03-24 19:57:14.619238"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Destroy (4.7ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mWorkoutSession Destroy (4.6ms)[0m  [1m[31mDELETE FROM "workout_sessions"[0m
+  [1m[36mWorkout Destroy (3.6ms)[0m  [1m[31mDELETE FROM "workouts"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Jason"], ["password_digest", "$2a$12$yUlp70xqPE4raxUD8gwe7OKmSVFUTRQKwIjWgcfR/9Fc6rn4yfKIK"], ["created_at", "2021-03-24 19:58:44.541535"], ["updated_at", "2021-03-24 19:58:44.541535"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Mike"], ["password_digest", "$2a$12$wgleAuF.qRqgMR/oygGpwe8oc0zqCgZmUiAw0wWfHEb9WYEcrlisW"], ["created_at", "2021-03-24 19:58:44.721787"], ["updated_at", "2021-03-24 19:58:44.721787"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Joe"], ["password_digest", "$2a$12$95eWyUBEQEla31/vxXUJEeB255Kw5.xgIkUM5HGmYHGszAjZ87ca2"], ["created_at", "2021-03-24 19:58:44.900936"], ["updated_at", "2021-03-24 19:58:44.900936"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Destroy (4.5ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mWorkoutSession Destroy (4.5ms)[0m  [1m[31mDELETE FROM "workout_sessions"[0m
+  [1m[36mWorkout Destroy (4.9ms)[0m  [1m[31mDELETE FROM "workouts"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Jason"], ["password_digest", "$2a$12$skoBaStRrcU7kow9K/F4RuYUHrcDyCZU3IaDL4utMOnwxhkEa8aVm"], ["created_at", "2021-03-24 19:59:28.445992"], ["updated_at", "2021-03-24 19:59:28.445992"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Mike"], ["password_digest", "$2a$12$1AW.Ta/XGW0oaERBUGNQJ.BZTl1monVoPYcvhfvlXpqn9YGH7x5LS"], ["created_at", "2021-03-24 19:59:28.622751"], ["updated_at", "2021-03-24 19:59:28.622751"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Joe"], ["password_digest", "$2a$12$x.zXPMDhIO92KYDKZTy43eZ0qTMxQT4JscCm3IAOiWl/lWu.GbhKm"], ["created_at", "2021-03-24 19:59:28.799604"], ["updated_at", "2021-03-24 19:59:28.799604"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkoutSession Create (0.9ms)[0m  [1m[32mINSERT INTO "workout_sessions" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Leg Day"], ["user_id", 7], ["created_at", "2021-03-24 19:59:28.910171"], ["updated_at", "2021-03-24 19:59:28.910171"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkoutSession Create (0.7ms)[0m  [1m[32mINSERT INTO "workout_sessions" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Arm Day"], ["user_id", 7], ["created_at", "2021-03-24 19:59:28.918385"], ["updated_at", "2021-03-24 19:59:28.918385"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkoutSession Create (0.7ms)[0m  [1m[32mINSERT INTO "workout_sessions" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Chest Day"], ["user_id", 7], ["created_at", "2021-03-24 19:59:28.925255"], ["updated_at", "2021-03-24 19:59:28.925255"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkout Create (0.7ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "weight", "reps", "sets", "workout_session_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Bench"], ["weight", 150], ["reps", 3], ["sets", 3], ["workout_session_id", 3], ["created_at", "2021-03-24 19:59:28.937083"], ["updated_at", "2021-03-24 19:59:28.937083"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkout Create (0.7ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "weight", "reps", "sets", "workout_session_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dips"], ["weight", 25], ["reps", 3], ["sets", 4], ["workout_session_id", 3], ["created_at", "2021-03-24 19:59:28.944753"], ["updated_at", "2021-03-24 19:59:28.944753"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for ::1 at 2021-03-24 16:02:32 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 34.9ms | Allocations: 477)
+Completed 200 OK in 140ms (Views: 71.1ms | ActiveRecord: 0.0ms | Allocations: 4121)
+
+
+Started GET "/favicon.ico" for ::1 at 2021-03-24 16:02:32 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/users" for ::1 at 2021-03-24 16:02:43 -0400
+Processing by UsersController#index as HTML
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 69)
+
+
+Started GET "/rails/info/routes" for ::1 at 2021-03-24 16:23:23 -0400
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/layouts/application.html.erb
+  Rendering /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/actionpack-6.1.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [48 times] (Duration: 7.0ms | Allocations: 5314)
+  Rendered /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/actionpack-6.1.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 0.7ms | Allocations: 690)
+  Rendered /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 24.9ms | Allocations: 8978)
+  Rendered layout /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/layouts/application.html.erb (Duration: 31.2ms | Allocations: 9217)
+Completed 200 OK in 33ms (Views: 32.3ms | Allocations: 10267)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Destroy (5.4ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mWorkoutSession Destroy (5.5ms)[0m  [1m[31mDELETE FROM "workout_sessions"[0m
+  [1m[36mWorkout Destroy (5.2ms)[0m  [1m[31mDELETE FROM "workouts"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Jason"], ["password_digest", "$2a$12$4fmNK5QRdJx23CzOUrPC2Odpgo9IIVfrFPQY39yLglo0RlN.S.jda"], ["created_at", "2021-03-24 20:30:26.726862"], ["updated_at", "2021-03-24 20:30:26.726862"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Mike"], ["password_digest", "$2a$12$clAqSNHs4yQ3mG8/VoB8nuV8SoArAsb9aZt7A1fRBzlbofOs83DjK"], ["created_at", "2021-03-24 20:30:26.909886"], ["updated_at", "2021-03-24 20:30:26.909886"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Joe"], ["password_digest", "$2a$12$OoRFMH8b1JtCsyVRqbQw7ug.0PzST02STeIZJcBUCBYpi3zY2zZQK"], ["created_at", "2021-03-24 20:30:27.092219"], ["updated_at", "2021-03-24 20:30:27.092219"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkoutSession Create (0.7ms)[0m  [1m[32mINSERT INTO "workout_sessions" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Leg Day"], ["user_id", 10], ["created_at", "2021-03-24 20:30:27.115132"], ["updated_at", "2021-03-24 20:30:27.115132"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkoutSession Create (0.7ms)[0m  [1m[32mINSERT INTO "workout_sessions" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Arm Day"], ["user_id", 10], ["created_at", "2021-03-24 20:30:27.123731"], ["updated_at", "2021-03-24 20:30:27.123731"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkoutSession Create (0.7ms)[0m  [1m[32mINSERT INTO "workout_sessions" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Chest Day"], ["user_id", 10], ["created_at", "2021-03-24 20:30:27.131344"], ["updated_at", "2021-03-24 20:30:27.131344"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkout Create (0.9ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "weight", "reps", "sets", "workout_session_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Bench"], ["weight", 150], ["reps", 3], ["sets", 3], ["workout_session_id", 6], ["created_at", "2021-03-24 20:30:27.147258"], ["updated_at", "2021-03-24 20:30:27.147258"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkout Create (0.7ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "weight", "reps", "sets", "workout_session_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dips"], ["weight", 25], ["reps", 3], ["sets", 4], ["workout_session_id", 6], ["created_at", "2021-03-24 20:30:27.155894"], ["updated_at", "2021-03-24 20:30:27.155894"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users" for ::1 at 2021-03-24 16:33:10 -0400
+Processing by UsersController#index as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 181)
+
+
+  
+SyntaxError (/mnt/c/Users/JASON/dev/flatiron/projects/My_workout_app/backend/app/models/user.rb:2: syntax error, unexpected tIDENTIFIER, expecting end
+...any :workout_sessions dependant: :destroy
+...                      ^~~~~~~~~):
+  
+app/models/user.rb:2: syntax error, unexpected tIDENTIFIER, expecting end
+app/models/user.rb:2: syntax error, unexpected tIDENTIFIER, expecting end
+app/controllers/users_controller.rb:4:in `index'
+Started GET "/users" for ::1 at 2021-03-24 16:33:59 -0400
+Processing by UsersController#index as HTML
+Completed 500 Internal Server Error in 10ms (Allocations: 1063)
+
+
+  
+ArgumentError (Unknown key: :dependant. Valid keys are: :class_name, :anonymous_class, :primary_key, :foreign_key, :dependent, :validate, :inverse_of, :strict_loading, :autosave, :before_add, :after_add, :before_remove, :after_remove, :extend, :counter_cache, :join_table, :index_errors, :ensuring_owner_was):
+  
+app/models/user.rb:2:in `<class:User>'
+app/models/user.rb:1:in `<main>'
+app/controllers/users_controller.rb:4:in `index'
+Started GET "/favicon.ico" for ::1 at 2021-03-24 16:33:59 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/users" for ::1 at 2021-03-24 16:34:47 -0400
+Processing by UsersController#index as HTML
+Completed 500 Internal Server Error in 11ms (Allocations: 3223)
+
+
+  
+NoMethodError (undefined method `json' for #<UsersController:0x007ffff1db8398>
+Did you mean?  JSON):
+  
+app/controllers/users_controller.rb:5:in `index'
+Started GET "/users" for ::1 at 2021-03-24 16:35:36 -0400
+Processing by UsersController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 1.1ms | Allocations: 6342)
+
+
+Started GET "/users/1" for ::1 at 2021-03-24 16:35:40 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 916)
+
+
+Started GET "/users" for ::1 at 2021-03-24 16:35:44 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 948)
+
+
+Started GET "/users/10" for ::1 at 2021-03-24 16:35:56 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 600)
+
+
+Started GET "/workouts" for ::1 at 2021-03-24 16:36:23 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/workouts"):
+  
+Started GET "/workout" for ::1 at 2021-03-24 16:36:29 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/workout"):
+  
+Started GET "/workout" for ::1 at 2021-03-24 16:37:00 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/workout"):
+  
+Started GET "/workouts" for ::1 at 2021-03-24 16:37:07 -0400
+Processing by WorkoutsController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/workouts_controller.rb:4:in `index'
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/controllers/workouts_controller.rb:4:in `index'
+Completed 200 OK in 14ms (Views: 12.4ms | ActiveRecord: 1.2ms | Allocations: 6686)
+
+
+Started GET "/workout_sessions" for ::1 at 2021-03-24 22:29:12 -0400
+Processing by WorkoutSessionsController#index as HTML
+Completed 204 No Content in 0ms (Allocations: 40)
+
+
+Started GET "/workout/1" for ::1 at 2021-03-24 22:29:23 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/workout/1"):
+  
+Started GET "/workouts/3" for ::1 at 2021-03-24 22:29:34 -0400
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/workouts_controller.rb:8:in `show'
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:8:in `show'
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 5477)
+
+
+Started GET "/workout_session" for ::1 at 2021-03-24 22:29:42 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/workout_session"):
+  
+Started GET "/workout_sessions" for ::1 at 2021-03-24 22:29:48 -0400
+Processing by WorkoutSessionsController#index as HTML
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 40)
+
+
+Started GET "/workout_sessions" for ::1 at 2021-03-24 22:30:04 -0400
+Processing by WorkoutSessionsController#index as HTML
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 25)
+
+
+Started GET "/workout_session" for ::1 at 2021-03-24 22:30:46 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/workout_session"):
+  
+Started GET "/workout_sessions" for ::1 at 2021-03-24 22:31:06 -0400
+Processing by WorkoutSessionsController#index as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1558)
+
+
+  
+NameError (uninitialized constant WorkoutSessionsController::WorkoutSessions):
+  
+app/controllers/workout_sessions_controller.rb:4:in `index'
+Started GET "/workout_sessions" for ::1 at 2021-03-24 22:32:42 -0400
+Processing by WorkoutSessionsController#index as HTML
+Completed 500 Internal Server Error in 6ms (Allocations: 1320)
+
+
+  
+ArgumentError (Unknown key: :dependant. Valid keys are: :class_name, :anonymous_class, :primary_key, :foreign_key, :dependent, :validate, :inverse_of, :strict_loading, :autosave, :before_add, :after_add, :before_remove, :after_remove, :extend, :counter_cache, :join_table, :index_errors, :ensuring_owner_was):
+  
+app/models/workout_session.rb:2:in `<class:WorkoutSession>'
+app/models/workout_session.rb:1:in `<main>'
+app/controllers/workout_sessions_controller.rb:4:in `index'
+Started GET "/workout_sessions" for ::1 at 2021-03-24 22:33:19 -0400
+Processing by WorkoutSessionsController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/workout_sessions_controller.rb:5:in `index'
+  [1m[36mWorkoutSession Load (0.1ms)[0m  [1m[34mSELECT "workout_sessions".* FROM "workout_sessions"[0m
+  ↳ app/controllers/workout_sessions_controller.rb:5:in `index'
+Completed 200 OK in 13ms (Views: 4.9ms | ActiveRecord: 1.0ms | Allocations: 5511)
+
+
+Started GET "/workouts" for ::1 at 2021-03-24 22:35:47 -0400
+Processing by WorkoutsController#index as HTML
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/controllers/workouts_controller.rb:4:in `index'
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.9ms | Allocations: 5315)
+
+
+Started GET "/workout_sessions" for ::1 at 2021-03-24 22:48:15 -0400
+Processing by WorkoutSessionsController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/workout_sessions_controller.rb:5:in `index'
+  [1m[36mWorkoutSession Load (0.3ms)[0m  [1m[34mSELECT "workout_sessions".* FROM "workout_sessions"[0m
+  ↳ app/controllers/workout_sessions_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.6ms | Allocations: 1488)
+
+
+Started GET "/users" for ::1 at 2021-03-24 22:48:25 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 6ms (Views: 3.3ms | ActiveRecord: 0.8ms | Allocations: 5185)
+
+
+Started GET "/users" for ::1 at 2021-03-24 22:52:03 -0400
+Processing by UsersController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.9ms | Allocations: 5953)
+
+
+Started GET "/workouts" for ::1 at 2021-03-24 22:52:09 -0400
+Processing by WorkoutsController#index as HTML
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/controllers/workouts_controller.rb:9:in `index'
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 1.2ms | Allocations: 5288)
+
+
+Started GET "/workouts" for ::1 at 2021-03-24 23:00:49 -0400
+  
+SyntaxError (/mnt/c/Users/JASON/dev/flatiron/projects/My_workout_app/backend/app/controllers/workouts_controller.rb:36: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/workouts_controller.rb:36: syntax error, unexpected end-of-input, expecting end
+app/controllers/workouts_controller.rb:36: syntax error, unexpected end-of-input, expecting end
+Started GET "/workouts" for ::1 at 2021-03-24 23:01:00 -0400
+Processing by WorkoutsController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/workouts_controller.rb:33:in `find_workout_session'
+  [1m[36mWorkoutSession Load (0.1ms)[0m  [1m[34mSELECT "workout_sessions".* FROM "workout_sessions" WHERE "workout_sessions"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:33:in `find_workout_session'
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/controllers/workouts_controller.rb:10:in `index'
+Completed 200 OK in 8ms (Views: 3.3ms | ActiveRecord: 0.8ms | Allocations: 7484)
+
+
+Started GET "/workout_sessions" for ::1 at 2021-03-24 23:01:11 -0400
+Processing by WorkoutSessionsController#index as HTML
+  [1m[36mWorkoutSession Load (0.2ms)[0m  [1m[34mSELECT "workout_sessions".* FROM "workout_sessions"[0m
+  ↳ app/controllers/workout_sessions_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.4ms | Allocations: 3192)
+
+
+Started GET "/workout_sessions" for ::1 at 2021-03-24 23:38:47 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/mnt/c/Users/JASON/dev/flatiron/projects/My_workout_app/backend/app/controllers/application_controller.rb:12: syntax error, unexpected if, expecting ')'
+        if auth_header
+        ^~
+/mnt/c/Users/JASON/dev/flatiron/projects/My_workout_app/backend/app/controllers/application_controller.rb:13: syntax error, unexpected ')', expecting end
+            token = auth)header.split(' ')[1]
+                        ^
+/mnt/c/Users/JASON/dev/flatiron/projects/My_workout_app/backend/app/controllers/application_controller.rb:37: syntax error, unexpected end, expecting end-of-input):
+  
+app/controllers/application_controller.rb:12: syntax error, unexpected if, expecting ')'
+app/controllers/application_controller.rb:13: syntax error, unexpected ')', expecting end
+app/controllers/application_controller.rb:37: syntax error, unexpected end, expecting end-of-input
+app/controllers/application_controller.rb:12: syntax error, unexpected if, expecting ')'
+app/controllers/application_controller.rb:13: syntax error, unexpected ')', expecting end
+app/controllers/application_controller.rb:37: syntax error, unexpected end, expecting end-of-input
+app/controllers/workout_sessions_controller.rb:1:in `<main>'
+Started GET "/workout_sessions" for ::1 at 2021-03-24 23:39:24 -0400
+Processing by WorkoutSessionsController#index as HTML
+Completed 500 Internal Server Error in 3ms (Allocations: 1477)
+
+
+  
+NoMethodError (undefined method `logged_in?' for #<WorkoutSessionsController:0x007f6ef50dbae0>
+Did you mean?  logged_in):
+  
+app/controllers/application_controller.rb:34:in `authorized'
+Started GET "/workout_sessions" for ::1 at 2021-03-24 23:39:49 -0400
+Processing by WorkoutSessionsController#index as HTML
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | Allocations: 125)
+
+
+Started GET "/" for ::1 at 2021-03-25 15:44:02 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 26.2ms | Allocations: 195)
+Completed 200 OK in 29ms (Views: 27.5ms | ActiveRecord: 0.0ms | Allocations: 761)
+
+
+Started GET "/scores" for ::1 at 2021-03-25 15:44:07 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/scores"):
+  
+Started GET "/users" for ::1 at 2021-03-25 15:44:14 -0400
+Processing by UsersController#index as HTML
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 129)
+
+
+Started GET "/users" for ::1 at 2021-03-25 15:44:28 -0400
+Processing by UsersController#index as HTML
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 104)
+
+
+Started GET "/users" for ::1 at 2021-03-25 15:44:31 -0400
+Processing by UsersController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 9ms (Views: 6.4ms | ActiveRecord: 1.2ms | Allocations: 5949)
+
+
+Started GET "/users" for ::1 at 2021-03-25 15:46:08 -0400
+  [1m[35m (5.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 55ms (Views: 8.5ms | ActiveRecord: 0.9ms | Allocations: 8490)
+
+
+Started GET "/workout_sessions" for ::1 at 2021-03-25 15:46:16 -0400
+Processing by WorkoutSessionsController#index as HTML
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 124)
+
+
+Started GET "/workout_sessions" for ::1 at 2021-03-25 15:46:32 -0400
+Processing by WorkoutSessionsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/workout_sessions_controller.rb:6:in `index'
+  [1m[36mWorkoutSession Load (0.2ms)[0m  [1m[34mSELECT "workout_sessions".* FROM "workout_sessions"[0m
+  ↳ app/controllers/workout_sessions_controller.rb:6:in `index'
+Completed 200 OK in 24ms (Views: 6.7ms | ActiveRecord: 1.6ms | Allocations: 5755)
+
+
+Started GET "/workout_sessions" for ::1 at 2021-03-25 15:47:27 -0400
+Processing by WorkoutSessionsController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/workout_sessions_controller.rb:6:in `index'
+  [1m[36mWorkoutSession Load (0.1ms)[0m  [1m[34mSELECT "workout_sessions".* FROM "workout_sessions"[0m
+  ↳ app/controllers/workout_sessions_controller.rb:6:in `index'
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 1.0ms | Allocations: 5356)
+
+
+Started GET "/workout_sessions" for ::1 at 2021-03-25 15:47:37 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WorkoutSessionsController#index as HTML
+  [1m[36mWorkoutSession Load (0.2ms)[0m  [1m[34mSELECT "workout_sessions".* FROM "workout_sessions"[0m
+  ↳ app/controllers/workout_sessions_controller.rb:6:in `index'
+Completed 200 OK in 20ms (Views: 12.3ms | ActiveRecord: 0.9ms | Allocations: 8153)
+
+
+Started GET "/workout_sessions" for ::1 at 2021-03-25 15:50:03 -0400
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WorkoutSessionsController#index as HTML
+  [1m[36mWorkoutSession Load (0.3ms)[0m  [1m[34mSELECT "workout_sessions".* FROM "workout_sessions"[0m
+  ↳ app/controllers/workout_sessions_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 1.0ms | Allocations: 11403)
+
+
+  
+NameError (uninitialized constant ActiveRecord::Serializer
+Did you mean?  ActiveRecord::Serialization):
+  
+app/serializers/workout_session_serializer.rb:1:in `<main>'
+app/controllers/workout_sessions_controller.rb:6:in `index'
+Started GET "/workout_sessions" for ::1 at 2021-03-25 15:51:59 -0400
+Processing by WorkoutSessionsController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/workout_sessions_controller.rb:6:in `index'
+  [1m[36mWorkoutSession Load (0.1ms)[0m  [1m[34mSELECT "workout_sessions".* FROM "workout_sessions"[0m
+  ↳ app/controllers/workout_sessions_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."workout_session_id" = ?[0m  [["workout_session_id", 4]]
+[active_model_serializers]   ↳ app/controllers/workout_sessions_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."workout_session_id" = ?[0m  [["workout_session_id", 5]]
+[active_model_serializers]   ↳ app/controllers/workout_sessions_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."workout_session_id" = ?[0m  [["workout_session_id", 6]]
+[active_model_serializers]   ↳ app/controllers/workout_sessions_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (65.07ms)
+Completed 200 OK in 154ms (Views: 152.0ms | ActiveRecord: 3.1ms | Allocations: 17475)
+
+
+Started GET "/users" for ::1 at 2021-03-25 15:52:11 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mWorkoutSession Load (0.2ms)[0m  [1m[34mSELECT "workout_sessions".* FROM "workout_sessions" WHERE "workout_sessions"."user_id" = ?[0m  [["user_id", 10]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mWorkoutSession Load (0.1ms)[0m  [1m[34mSELECT "workout_sessions".* FROM "workout_sessions" WHERE "workout_sessions"."user_id" = ?[0m  [["user_id", 11]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mWorkoutSession Load (0.1ms)[0m  [1m[34mSELECT "workout_sessions".* FROM "workout_sessions" WHERE "workout_sessions"."user_id" = ?[0m  [["user_id", 12]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.65ms)
+Completed 200 OK in 51ms (Views: 47.9ms | ActiveRecord: 1.5ms | Allocations: 8471)
+
+
