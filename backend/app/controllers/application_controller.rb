@@ -2,11 +2,11 @@ class ApplicationController < ActionController::API
 
     def encode_token(payload)
         JWT.encode payload, ENV['JWT_SECRET']
-    end
+      end
     
     def auth_header
-        request.headers['Authorization']
-    end
+    request.headers['Authorization']
+  end
     
     def decode_token
         if auth_header
@@ -17,12 +17,12 @@ class ApplicationController < ActionController::API
                 nil
             end
         end
-    end
+    end 
 
     def current_user
         if decode_token
-            user_id = decode_token[0]['user_id']
-            @user = User.find_by_id(id: user_id)
+            user_id = decode_token['user_id']
+            @user = User.find_by(id: user_id)
         end
     end
 
