@@ -29511,3 +29511,120 @@ Processing by AuthController#profile as */*
 Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.4ms | Allocations: 2173)
 
 
+Started POST "/users" for ::1 at 2021-04-06 15:08:28 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"Josh", "password"=>"[FILTERED]", "message"=>""}}
+[31mUnpermitted parameter: :message[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Josh"], ["password_digest", "$2a$12$Nuk7cSw9J9v0lgFYHnaLy.KZ0Ej3WtCTmCZdpFCKsZt.mxDGNetQy"], ["created_at", "2021-04-06 19:08:28.978454"], ["updated_at", "2021-04-06 19:08:28.978454"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 200 OK in 187ms (Views: 0.6ms | ActiveRecord: 8.0ms | Allocations: 4060)
+
+
+Started GET "/profile" for ::1 at 2021-04-06 15:08:29 -0400
+Processing by AuthController#profile as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+[active_model_serializers]   [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."user_id" = ?[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/auth_controller.rb:15:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.33ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.6ms | Allocations: 2212)
+
+
+Started POST "/users/2/workouts" for ::1 at 2021-04-06 15:08:51 -0400
+Processing by WorkoutsController#create as */*
+  Parameters: {"name"=>"Push", "weight"=>0, "reps"=>"8", "sets"=>"3", "user_id"=>"2", "workout"=>{"name"=>"Push", "weight"=>0, "reps"=>"8", "sets"=>"3"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:34:in `find_user'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+  [1m[36mWorkout Create (0.9ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "weight", "reps", "sets", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Push"], ["weight", 0], ["reps", 8], ["sets", 3], ["user_id", 2], ["created_at", "2021-04-06 19:08:51.310334"], ["updated_at", "2021-04-06 19:08:51.310334"]]
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Workout (0.17ms)
+Completed 200 OK in 18ms (Views: 0.6ms | ActiveRecord: 6.5ms | Allocations: 3662)
+
+
+Started POST "/users/2/workouts" for ::1 at 2021-04-06 15:09:10 -0400
+Processing by WorkoutsController#create as */*
+  Parameters: {"name"=>"Bench Press", "weight"=>"200", "reps"=>"8", "sets"=>"4", "user_id"=>"2", "workout"=>{"name"=>"Bench Press", "weight"=>"200", "reps"=>"8", "sets"=>"4"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:34:in `find_user'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+  [1m[36mWorkout Create (2.5ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "weight", "reps", "sets", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Bench Press"], ["weight", 200], ["reps", 8], ["sets", 4], ["user_id", 2], ["created_at", "2021-04-06 19:09:10.950989"], ["updated_at", "2021-04-06 19:09:10.950989"]]
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Workout (0.18ms)
+Completed 200 OK in 13ms (Views: 0.6ms | ActiveRecord: 7.9ms | Allocations: 3604)
+
+
+Started POST "/users/2/workouts" for ::1 at 2021-04-06 15:09:23 -0400
+Processing by WorkoutsController#create as */*
+  Parameters: {"name"=>"Bench Press", "weight"=>"215", "reps"=>"8", "sets"=>"4", "user_id"=>"2", "workout"=>{"name"=>"Bench Press", "weight"=>"215", "reps"=>"8", "sets"=>"4"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:34:in `find_user'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+  [1m[36mWorkout Create (1.0ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "weight", "reps", "sets", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Bench Press"], ["weight", 215], ["reps", 8], ["sets", 4], ["user_id", 2], ["created_at", "2021-04-06 19:09:23.675341"], ["updated_at", "2021-04-06 19:09:23.675341"]]
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Workout (0.21ms)
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 6.6ms | Allocations: 3587)
+
+
+Started DELETE "/users/2/workouts/28" for ::1 at 2021-04-06 15:10:16 -0400
+Processing by WorkoutsController#destroy as */*
+  Parameters: {"user_id"=>"2", "id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:34:in `find_user'
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:26:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:27:in `destroy'
+  [1m[36mWorkout Destroy (1.2ms)[0m  [1m[31mDELETE FROM "workouts" WHERE "workouts"."id" = ?[0m  [["id", 28]]
+  ↳ app/controllers/workouts_controller.rb:27:in `destroy'
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:27:in `destroy'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Workout (0.23ms)
+Completed 200 OK in 12ms (Views: 0.7ms | ActiveRecord: 7.3ms | Allocations: 3453)
+
+
+Started POST "/users/2/workouts" for ::1 at 2021-04-06 15:10:20 -0400
+Processing by WorkoutsController#create as */*
+  Parameters: {"name"=>"Bench Press", "weight"=>"", "reps"=>"8", "sets"=>"3", "user_id"=>"2", "workout"=>{"name"=>"Bench Press", "weight"=>"", "reps"=>"8", "sets"=>"3"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:34:in `find_user'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+  [1m[36mWorkout Create (1.0ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "reps", "sets", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bench Press"], ["reps", 8], ["sets", 3], ["user_id", 2], ["created_at", "2021-04-06 19:10:20.094045"], ["updated_at", "2021-04-06 19:10:20.094045"]]
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Workout (0.19ms)
+Completed 200 OK in 11ms (Views: 0.8ms | ActiveRecord: 6.4ms | Allocations: 3592)
+
+
+Started GET "/profile" for ::1 at 2021-04-06 15:10:27 -0400
+Processing by AuthController#profile as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+[active_model_serializers]   [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."user_id" = ?[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/auth_controller.rb:15:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.44ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.3ms | Allocations: 2569)
+
+
