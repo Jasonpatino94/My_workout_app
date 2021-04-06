@@ -1,37 +1,41 @@
 class WorkoutsController < ApplicationController
-    before_action :find_workout_session
-    before_action :authorized, except: [:create]
+    before_action :find_user
+    # before_action :authorized, except: [:create]
    
     def index
-        if params[:workout_session_id]
-            @workouts = @ws.workouts
-        else
-            @workouts = Workout.all
-        end
-        render json: @workouts
+       @workouts = @user.workouts
+       render json: @workouts
     end
 
     def show
-        @workout = Workout.find_by(id: params[:id])
+        @user = User.find_by(id: params[:user_id])
+        @workout = @user.workouts.find_by(id: params[:id])
         render json: @workout
     end
 
     def create
-        puts "stuffs"
-    end
-
-    def update
-        puts "stuffs"
+       @workout = @user.workouts.build(workout_params)
+       if @user.valid? && @workout.save
+        render json: @workout
+       else 
+        render json: {error: "could't save that workout", status: 400}
+       end
     end
 
     def destroy
-        puts "stuffs"
+        @workout = Workout.find_by(id: params[:id])
+        @workout.destroy
+        render json: @workout
     end
 
     private
 
-    def find_workout_session
-        @ws = WorkoutSession.find_by(id: params[:workout_session_id])
+    def find_user
+        @user = User.find_by(id: params[:user_id])
+    end
+
+    def workout_params
+        params.require(:workout).permit(:name, :weight, :reps, :sets)   
     end
 
 end

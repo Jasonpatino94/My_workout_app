@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = [], action) => {
 	switch (action.type) {
-		case "SET_WORKOUT_SESSION":
-			return action.payload;
+		// case "SET_USER":
+		// 	return action.payload.workouts_sessions;
 		case "ADD_WORKOUT_SESSION":
 			return [...state, action.payload];
 		case "DELETE_WORKOUT_SESSION":

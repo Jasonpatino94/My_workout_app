@@ -7,3 +7,7 @@ export const getUser = () => {
 		});
 	};
 };
+
+export const clearUser = () => {
+	return {type: "CLEAR_USER"};
+};

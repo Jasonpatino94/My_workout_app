@@ -13,15 +13,19 @@ class UsersController < ApplicationController
     end
 
     def create
-        puts "stuffs"
+       @user = User.create(user_params)
+       if @user.save
+        token = encode_token({user_id: @user.id})
+        render json: {:user => @user, :jwt => token}
+       else
+        render json: {error: 'couldnt make that user', status: 400}
+       end
     end
 
-    def update
-        puts "Stuffs"
-    end
+    private
 
-    def destroy
-        puts "Stuffs"
+    def user_params
+        params.require(:user).permit(:name, :password)
     end
     
 end

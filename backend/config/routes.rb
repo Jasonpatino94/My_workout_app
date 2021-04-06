@@ -1,14 +1,8 @@
 Rails.application.routes.draw do
-
-  resources :workout_sessions do
+ 
+  resources :users do 
     resources :workouts
   end
-  
-  resources :users do
-    resources :workout_sessions
-  end 
-
-  resources :workouts
 
   post '/authenticate', to: 'auth#create'
   get '/profile', to: 'auth#profile'

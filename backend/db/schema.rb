@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_03_24_043211) do
     t.integer "weight"
     t.integer "reps"
     t.integer "sets"
-    t.integer "workout_session_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

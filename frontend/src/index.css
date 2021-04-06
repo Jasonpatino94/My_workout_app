@@ -5,6 +5,9 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background-image: url(./imgs/images.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 code {
@@ -14,4 +17,57 @@ code {
 
 #root {
 	text-align: center;
+}
+
+.view-more-btn {
+	border-radius: 50%;
+}
+
+h1 {
+	color: red;
+}
+
+.submit-btn {
+	background-color: yellow;
+}
+
+.workouts {
+	border: 5px solid blue;
+	/* background: rgba(0, 0, 0, 0.6); */
+	color: rgb(0, 1, 2);
+	font-size: larger;
+}
+
+.workout-list {
+	display: grid;
+	grid-template-columns: 300px 300px 300px 300px;
+	justify-content: space-between;
+}
+
+.workout-list > .workouts {
+	background-color: rgba(184, 152, 152, 0.8);
+	text-align: center;
+}
+
+.workout-form {
+	color: Yellow;
+	background-color: black;
+	margin-left: 500px;
+	margin-right: 500px;
+}
+
+.profile-name {
+	font-size: 50px;
+	color: yellow;
+}
+
+.workout-modal {
+	border: 10px solid;
+	text-align: center;
+	margin: 20% 20%;
+	background-color: yellow;
+}
+
+.close-btn {
+	float: right;
 }

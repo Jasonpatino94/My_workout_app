@@ -1,5 +1,8 @@
 import React, {Component} from "react";
 import {authRequest} from "../services/api";
+import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
+import {getToken} from "../services/local_storage";
 
 export class Login extends Component {
 	state = {
@@ -7,16 +10,22 @@ export class Login extends Component {
 		password: "",
 		message: "",
 	};
+	1;
+	componentDidMount() {
+		console.log(this.props);
+	}
 
 	handleSubmit = (event) => {
 		event.preventDefault();
 		const {name, password} = this.state;
+		this.props.setUser(this.state);
 
 		authRequest({name, password}).then((res) => {
 			if (res.error) {
 				this.setState({message: res.error});
 			} else {
 				localStorage.setItem("jwt", res.jwt);
+				this.props.history.push("/profile");
 			}
 		});
 	};
@@ -32,6 +41,8 @@ export class Login extends Component {
 	render() {
 		return (
 			<div>
+				{getToken() ? <Redirect to="/profile" /> : null}
+				<h1>Please Login!</h1>
 				<p>{localStorage.getItem("jwt")}</p>
 				<form onSubmit={this.handleSubmit}>
 					{this.state.message}
@@ -50,9 +61,21 @@ export class Login extends Component {
 
 					<input type="submit" value="login" />
 				</form>
+
+				<h2>
+					{" "}
+					If you dont have an account with us, Please{" "}
+					<a href="/signup">Signup!</a>
+				</h2>
 			</div>
 		);
 	}
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		setUser: (user) => dispatch({type: "SET_USER", payload: user}),
+	};
+};
+
+export default connect(null, mapDispatchToProps)(Login);
