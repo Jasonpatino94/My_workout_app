@@ -71,3 +71,7 @@ h1 {
 .close-btn {
 	float: right;
 }
+
+.error {
+	color: yellow;
+}

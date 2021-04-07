@@ -45,7 +45,7 @@ export class Login extends Component {
 				<h1>Please Login!</h1>
 				<p>{localStorage.getItem("jwt")}</p>
 				<form onSubmit={this.handleSubmit}>
-					{this.state.message}
+					<h2 className="error">{this.state.message}</h2>
 					<label>Name: </label>
 					<input
 						type="text"

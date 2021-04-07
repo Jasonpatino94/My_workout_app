@@ -6,11 +6,15 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import Signup from "./components/Signup";
 import {clearUser} from "./redux/actions/userActions";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 //services
 import {clearToken, getToken} from "./services/local_storage";
 
 function App() {
+	// eslint-disable-next-line
+	const state = useSelector((state) => state);
+	// used just for "re-rendering"
+
 	const dispatch = useDispatch();
 
 	const handleLogout = () => {
