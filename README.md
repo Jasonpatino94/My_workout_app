@@ -4,7 +4,7 @@ This is a workout tracker app where a user can sign up and then sign in and star
 
 # How to run the app:
 
-The very first think that you will have to do is run "bundle" or "bundle install" on the terminal. Once you have done that, you will have to run the frontend and backend at the same time. To do this, you will have to "cd" into each one. Once in the frontend, you will have to run "yarn start" or "npm start" to start the server, and once in the backend, you will have to run "rails s" to run the backend server.
+You will have to run the frontend and backend at the same time. To do this, you will have to "cd" into each one. Once in the frontend, you will have to run "yarn start" or "npm start" to start the server, and once in the backend, you will have to run "bundle" or "bundle install", and after you will have to run "rails s" to run the backend server.
 
 # Usage:
 
