@@ -12,7 +12,7 @@ class AuthController < ApplicationController
     end
 
     def profile
-        render json: @user
+        render json: {user: @user, workout_sessions: @user.workout_sessions.map {|ws| WorkoutSessionSerializer.new(ws) }}
     end
 
 
