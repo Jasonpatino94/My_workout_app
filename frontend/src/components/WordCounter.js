@@ -31,8 +31,6 @@ export class WordCounter extends Component {
 		for (let i = 0; i < 5000; i++) {
 			console.log("d");
 		}
-
-		// a, d, b, c
 	};
 
 	render() {

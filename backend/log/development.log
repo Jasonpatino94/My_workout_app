@@ -30043,3 +30043,107 @@ No serializer found for resource: #<Workout id: 30, name: "Bench", weight: 155, 
 Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.5ms | Allocations: 1461)
 
 
+  [1m[35m (5.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210324043053)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210324043053"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateWorkouts (20210324043201)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "workouts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "weight" integer, "reps" integer, "sets" integer, "workout_session_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210324043201"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateWorkoutSessions (20210324043211)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "workout_sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210324043211"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-06 13:20:37.660155"], ["updated_at", "2021-05-06 13:20:37.660155"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Destroy (5.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mWorkoutSession Destroy (4.8ms)[0m  [1m[31mDELETE FROM "workout_sessions"[0m
+  [1m[36mWorkout Destroy (5.8ms)[0m  [1m[31mDELETE FROM "workouts"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Jason"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Jason"], ["password_digest", "$2a$12$HD/XRe/TayNLzX49x5y6w.uzuO84kkKfmd4VKz6bA.p3xOIFteDkO"], ["created_at", "2021-05-06 13:22:09.956281"], ["updated_at", "2021-05-06 13:22:09.956281"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Mike"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Mike"], ["password_digest", "$2a$12$uNsAFkIZ26.bY87nh4PDVu61DrneJQQ8jo7mZcUB6aBPfwep7jOMe"], ["created_at", "2021-05-06 13:22:10.134787"], ["updated_at", "2021-05-06 13:22:10.134787"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Joe"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Joe"], ["password_digest", "$2a$12$qR.a55.p7PUiX7YNdnpXW.E3trXy4zpQefZAOSHNx3eE2fSEHm2BK"], ["created_at", "2021-05-06 13:22:10.312907"], ["updated_at", "2021-05-06 13:22:10.312907"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Destroy (5.4ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mWorkoutSession Destroy (5.5ms)[0m  [1m[31mDELETE FROM "workout_sessions"[0m
+  [1m[36mWorkout Destroy (6.0ms)[0m  [1m[31mDELETE FROM "workouts"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Jason"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Jason"], ["password_digest", "$2a$12$hPOkeUiIxRvFuHx7Lu9L2.ueTFlrexXVcf3hGcn7UECGQz5pgmGTC"], ["created_at", "2021-05-06 13:23:57.649705"], ["updated_at", "2021-05-06 13:23:57.649705"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Mike"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Mike"], ["password_digest", "$2a$12$/Yc.i2phE/3xqq4m6/h4tO7gwZFDqQ30HR/mKIGUnj/Q9khgpO9jC"], ["created_at", "2021-05-06 13:23:57.828514"], ["updated_at", "2021-05-06 13:23:57.828514"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Joe"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Joe"], ["password_digest", "$2a$12$M1aBEeAlgw02TPnM9VFKIeCVr1xhjjc4QtOdfB.xvGA13D1zWpT4m"], ["created_at", "2021-05-06 13:23:58.006709"], ["updated_at", "2021-05-06 13:23:58.006709"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Destroy (5.9ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mWorkoutSession Destroy (5.9ms)[0m  [1m[31mDELETE FROM "workout_sessions"[0m
+  [1m[36mWorkout Destroy (5.4ms)[0m  [1m[31mDELETE FROM "workouts"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Jason"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Jason"], ["password_digest", "$2a$12$Q3uaq60Hu5musHqLNmO4KuLznZ1hezvk/aijaaZHNhsT2j1JthNlW"], ["created_at", "2021-05-06 13:26:50.735006"], ["updated_at", "2021-05-06 13:26:50.735006"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Mike"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Mike"], ["password_digest", "$2a$12$8H644GyPFcRwk6zyhysFMuKMF0OdO.pKYthRWHkMDlqe6Au5qi3QK"], ["created_at", "2021-05-06 13:26:50.914369"], ["updated_at", "2021-05-06 13:26:50.914369"]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Joe"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Joe"], ["password_digest", "$2a$12$5gE7kd963FbXIN5pj4B.Me/C9SnRLY4ZCExN7GuxkhK0rXZcCqlQG"], ["created_at", "2021-05-06 13:26:51.093058"], ["updated_at", "2021-05-06 13:26:51.093058"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkoutSession Create (0.7ms)[0m  [1m[32mINSERT INTO "workout_sessions" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Leg Day"], ["user_id", 7], ["created_at", "2021-05-06 13:26:51.158427"], ["updated_at", "2021-05-06 13:26:51.158427"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkoutSession Create (0.8ms)[0m  [1m[32mINSERT INTO "workout_sessions" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Arm Day"], ["user_id", 7], ["created_at", "2021-05-06 13:26:51.165984"], ["updated_at", "2021-05-06 13:26:51.165984"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkoutSession Create (0.7ms)[0m  [1m[32mINSERT INTO "workout_sessions" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Chest Day"], ["user_id", 7], ["created_at", "2021-05-06 13:26:51.174178"], ["updated_at", "2021-05-06 13:26:51.174178"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkout Create (0.7ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "weight", "reps", "sets", "workout_session_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Bench"], ["weight", 150], ["reps", 3], ["sets", 3], ["workout_session_id", 1], ["created_at", "2021-05-06 13:26:51.185727"], ["updated_at", "2021-05-06 13:26:51.185727"]]
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkout Create (0.7ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "weight", "reps", "sets", "workout_session_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dips"], ["weight", 25], ["reps", 3], ["sets", 4], ["workout_session_id", 1], ["created_at", "2021-05-06 13:26:51.195837"], ["updated_at", "2021-05-06 13:26:51.195837"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkout Create (0.8ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "weight", "reps", "sets", "workout_session_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dumbell Curls"], ["weight", 50], ["reps", 3], ["sets", 4], ["workout_session_id", 1], ["created_at", "2021-05-06 13:26:51.203480"], ["updated_at", "2021-05-06 13:26:51.203480"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWorkout Create (0.7ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "weight", "reps", "sets", "workout_session_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "SkullCrushers"], ["weight", 70], ["reps", 3], ["sets", 4], ["workout_session_id", 1], ["created_at", "2021-05-06 13:26:51.210891"], ["updated_at", "2021-05-06 13:26:51.210891"]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mWorkoutSession Load (0.3ms)[0m  [1m[34mSELECT "workout_sessions".* FROM "workout_sessions" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]

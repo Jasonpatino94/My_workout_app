@@ -11,7 +11,6 @@ export class Home extends Component {
 					account please <a href="/login"> Login</a> Or else please
 					<a href="/Signup"> Sign up</a>
 				</h1>
-				<WordCounter />
 			</div>
 		);
 	}
