@@ -1,3 +1,3 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :workouts
+  attributes :id, :name, :workout_sessions
 end
