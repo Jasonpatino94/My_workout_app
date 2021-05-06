@@ -10,7 +10,7 @@ export class Login extends Component {
 		password: "",
 		message: "",
 	};
-	1;
+
 	componentDidMount() {
 		console.log(this.props);
 	}

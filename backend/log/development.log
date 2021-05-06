@@ -29776,3 +29776,270 @@ Processing by AuthController#create as */*
 Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 579)
 
 
+Started GET "/rails/info/routes" for ::1 at 2021-04-19 13:33:42 -0400
+  [1m[35m (8.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/layouts/application.html.erb
+  Rendering /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/actionpack-6.1.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [38 times] (Duration: 13.8ms | Allocations: 4298)
+  Rendered /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/actionpack-6.1.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 34.1ms | Allocations: 915)
+  Rendered /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 74.5ms | Allocations: 8151)
+  Rendered layout /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/layouts/application.html.erb (Duration: 79.4ms | Allocations: 8397)
+Completed 200 OK in 161ms (Views: 108.3ms | ActiveRecord: 0.0ms | Allocations: 11016)
+
+
+Started GET "/favicon.ico" for ::1 at 2021-04-19 13:33:43 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/authenticate" for ::1 at 2021-04-19 13:33:54 -0400
+Processing by AuthController#create as */*
+  Parameters: {"name"=>"Jason", "password"=>"[FILTERED]", "auth"=>{"name"=>"Jason", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Jason"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.6ms)
+Completed 200 OK in 271ms (Views: 9.4ms | ActiveRecord: 1.1ms | Allocations: 7591)
+
+
+Started GET "/profile" for ::1 at 2021-04-19 13:33:54 -0400
+Processing by AuthController#profile as */*
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+[active_model_serializers]   [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/auth_controller.rb:15:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (81.31ms)
+Completed 200 OK in 160ms (Views: 149.9ms | ActiveRecord: 2.3ms | Allocations: 11056)
+
+
+Started GET "/profile" for ::1 at 2021-04-19 13:34:03 -0400
+Processing by AuthController#profile as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+[active_model_serializers]   [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/auth_controller.rb:15:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.35ms)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 2194)
+
+
+Started GET "/rails/info/routes" for ::1 at 2021-04-19 13:42:27 -0400
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/layouts/application.html.erb
+  Rendering /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/actionpack-6.1.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [38 times] (Duration: 11.9ms | Allocations: 4262)
+  Rendered /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/actionpack-6.1.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 21.7ms | Allocations: 690)
+  Rendered /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 47.6ms | Allocations: 7436)
+  Rendered layout /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/layouts/application.html.erb (Duration: 53.9ms | Allocations: 7669)
+Completed 200 OK in 57ms (Views: 55.8ms | Allocations: 8574)
+
+
+Started GET "/users/1/workout_sessions/" for ::1 at 2021-04-19 13:42:28 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/workout_sessions"):
+  
+Started POST "/authenticate" for ::1 at 2021-04-19 14:03:02 -0400
+Processing by AuthController#create as */*
+  Parameters: {"name"=>"Jason", "password"=>"[FILTERED]", "auth"=>{"name"=>"Jason", "password"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Jason"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.23ms)
+Completed 200 OK in 184ms (Views: 0.7ms | ActiveRecord: 0.7ms | Allocations: 1497)
+
+
+Started GET "/profile" for ::1 at 2021-04-19 14:03:02 -0400
+Processing by AuthController#profile as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+[active_model_serializers]   [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/auth_controller.rb:15:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.87ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.6ms | Allocations: 2209)
+
+
+Started POST "/users/1/workouts" for ::1 at 2021-04-19 14:03:35 -0400
+Processing by WorkoutsController#create as */*
+  Parameters: {"name"=>"Bench", "weight"=>"155", "reps"=>"4", "sets"=>"4", "user_id"=>"1", "workout"=>{"name"=>"Bench", "weight"=>"155", "reps"=>"4", "sets"=>"4"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:34:in `find_user'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? AND "users"."id" != ? LIMIT ?[0m  [["name", "Jason"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+  [1m[36mWorkout Create (2.2ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "weight", "reps", "sets", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Bench"], ["weight", 155], ["reps", 4], ["sets", 4], ["user_id", 1], ["created_at", "2021-04-19 18:03:35.479982"], ["updated_at", "2021-04-19 18:03:35.479982"]]
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Workout (0.15ms)
+Completed 200 OK in 41ms (Views: 0.7ms | ActiveRecord: 8.4ms | Allocations: 8981)
+
+
+Started GET "/rails/info/routes" for ::1 at 2021-04-19 15:05:07 -0400
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/layouts/application.html.erb
+  Rendering /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/actionpack-6.1.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [38 times] (Duration: 7.8ms | Allocations: 4015)
+  Rendered /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/actionpack-6.1.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 0.3ms | Allocations: 88)
+  Rendered /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 9.4ms | Allocations: 6173)
+  Rendered layout /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/layouts/application.html.erb (Duration: 9.6ms | Allocations: 6247)
+Completed 200 OK in 10ms (Views: 10.0ms | Allocations: 6514)
+
+
+Started GET "/rails/info/routes" for ::1 at 2021-04-19 15:23:53 -0400
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/layouts/application.html.erb
+  Rendering /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/actionpack-6.1.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [38 times] (Duration: 6.5ms | Allocations: 4017)
+  Rendered /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/actionpack-6.1.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 0.2ms | Allocations: 87)
+  Rendered /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 7.9ms | Allocations: 6173)
+  Rendered layout /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/layouts/application.html.erb (Duration: 8.1ms | Allocations: 6248)
+Completed 200 OK in 9ms (Views: 8.6ms | Allocations: 6515)
+
+
+Started POST "/authenticate" for ::1 at 2021-04-26 15:02:10 -0400
+  [1m[35m (8.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/authenticate" for ::1 at 2021-04-26 15:02:10 -0400
+Processing by AuthController#create as */*
+Processing by AuthController#create as */*
+  Parameters: {"name"=>"Jason", "password"=>"[FILTERED]", "auth"=>{"name"=>"Jason", "password"=>"[FILTERED]"}}
+  Parameters: {"name"=>"Jason", "password"=>"[FILTERED]", "auth"=>{"name"=>"Jason", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Jason"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.84ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Jason"], ["LIMIT", 1]]
+Completed 200 OK in 304ms (Views: 11.3ms | ActiveRecord: 1.0ms | Allocations: 9970)
+
+
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.24ms)
+Completed 200 OK in 370ms (Views: 1.0ms | ActiveRecord: 0.7ms | Allocations: 5254)
+
+
+Started GET "/profile" for ::1 at 2021-04-26 15:02:11 -0400
+Processing by AuthController#profile as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+[active_model_serializers]   [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/auth_controller.rb:15:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (105.47ms)
+Completed 200 OK in 179ms (Views: 176.0ms | ActiveRecord: 1.4ms | Allocations: 10867)
+
+
+Started POST "/users/1/workouts" for ::1 at 2021-04-26 15:02:46 -0400
+Processing by WorkoutsController#create as */*
+  Parameters: {"name"=>"Dumb bell Curls", "weight"=>"35", "reps"=>"3", "sets"=>"3", "user_id"=>"1", "workout"=>{"name"=>"Dumb bell Curls", "weight"=>"35", "reps"=>"3", "sets"=>"3"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:34:in `find_user'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? AND "users"."id" != ? LIMIT ?[0m  [["name", "Jason"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+  [1m[36mWorkout Create (0.9ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "weight", "reps", "sets", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dumb bell Curls"], ["weight", 35], ["reps", 3], ["sets", 3], ["user_id", 1], ["created_at", "2021-04-26 19:02:46.381061"], ["updated_at", "2021-04-26 19:02:46.381061"]]
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:18:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Workout (0.2ms)
+Completed 200 OK in 16ms (Views: 1.8ms | ActiveRecord: 7.7ms | Allocations: 4871)
+
+
+Started DELETE "/users/1/workouts/31" for ::1 at 2021-04-26 15:03:15 -0400
+Processing by WorkoutsController#destroy as */*
+  Parameters: {"user_id"=>"1", "id"=>"31"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:34:in `find_user'
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:26:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:27:in `destroy'
+  [1m[36mWorkout Destroy (2.2ms)[0m  [1m[31mDELETE FROM "workouts" WHERE "workouts"."id" = ?[0m  [["id", 31]]
+  ↳ app/controllers/workouts_controller.rb:27:in `destroy'
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:27:in `destroy'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Workout (0.25ms)
+Completed 200 OK in 16ms (Views: 0.7ms | ActiveRecord: 10.1ms | Allocations: 3598)
+
+
+Started GET "/rails/info/routes" for ::1 at 2021-04-26 15:38:33 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/layouts/application.html.erb
+  Rendering /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/actionpack-6.1.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [38 times] (Duration: 14.2ms | Allocations: 4298)
+  Rendered /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/actionpack-6.1.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 30.3ms | Allocations: 916)
+  Rendered /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 67.8ms | Allocations: 8153)
+  Rendered layout /home/jasonpatino/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3/lib/rails/templates/layouts/application.html.erb (Duration: 73.4ms | Allocations: 8399)
+Completed 200 OK in 134ms (Views: 95.9ms | ActiveRecord: 0.0ms | Allocations: 10935)
+
+
+Started POST "/authenticate" for ::1 at 2021-04-26 15:40:09 -0400
+Processing by AuthController#create as */*
+  Parameters: {"name"=>"Jason", "password"=>"[FILTERED]", "auth"=>{"name"=>"Jason", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Jason"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.23ms)
+Completed 200 OK in 176ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 4864)
+
+
+Started GET "/profile" for ::1 at 2021-04-26 15:40:09 -0400
+Processing by AuthController#profile as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+[active_model_serializers]   [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/auth_controller.rb:15:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.68ms)
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 0.5ms | Allocations: 6959)
+
+
+Started GET "/profile" for ::1 at 2021-04-26 15:42:12 -0400
+Processing by AuthController#profile as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+[active_model_serializers]   [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/auth_controller.rb:15:in `profile'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.44ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.5ms | Allocations: 2306)
+
+
+Started GET "//users/1/workouts" for ::1 at 2021-04-26 15:42:31 -0400
+Processing by WorkoutsController#index as */*
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:34:in `find_user'
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `index'
+No serializer found for resource: #<Workout id: 30, name: "Bench", weight: 155, reps: 4, sets: 4, user_id: 1, created_at: "2021-04-19 18:03:35.479982000 +0000", updated_at: "2021-04-19 18:03:35.479982000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Workout::ActiveRecord_Associations_CollectionProxy (0.17ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.4ms | Allocations: 1695)
+
+
+Started GET "//users/1/workouts" for ::1 at 2021-04-26 15:43:43 -0400
+Processing by WorkoutsController#index as */*
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:34:in `find_user'
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `index'
+No serializer found for resource: #<Workout id: 30, name: "Bench", weight: 155, reps: 4, sets: 4, user_id: 1, created_at: "2021-04-19 18:03:35.479982000 +0000", updated_at: "2021-04-19 18:03:35.479982000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Workout::ActiveRecord_Associations_CollectionProxy (0.21ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.5ms | Allocations: 1461)
+
+

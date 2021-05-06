@@ -37,7 +37,7 @@ export class Signup extends Component {
 				<h2>Please Sign up with your name and password!</h2>
 				<br></br>
 				<form onSubmit={this.handleSubmit}>
-					{this.state.message}
+					<h2 className="error">{this.state.message}</h2>
 					<label> Name: </label>
 					<input
 						type="text"
