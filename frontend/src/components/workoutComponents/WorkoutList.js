@@ -1,25 +1,39 @@
 import React from "react";
-import {useSelector} from "react-redux";
-import WorkoutModal from "./WorkoutModal";
+import {useDispatch, useSelector} from "react-redux";
+import {deleteWorkout} from "../../services/api";
 
-const ShowWorkouts = () => {
+const WorkoutList = (props) => {
 	const state = useSelector((state) => state);
 
-	const renderWorkouts = state.workouts.map((workout) => (
-		<div className="workouts" key={workout.id}>
-			<p>
-				{workout.name} on {new Date(workout.created_at).toLocaleDateString()}
-			</p>
-			<WorkoutModal workout={workout} />
-		</div>
+	const dispatch = useDispatch();
+
+	const handleDelete = (workout) => {
+		deleteWorkout(workout.workout_sessions_id, workout.id).then((data) => data);
+
+		dispatch({type: "DELETE_WORKOUT", payload: workout});
+	};
+
+	const renderWorkouts = props.workouts.map((workout) => (
+		<li
+			onClick={() => handleDelete(workout)}
+			key={workout.id}
+			className="workouts"
+		>
+			{workout.name} with{" "}
+			{workout.weight === 0 ? "bodyweight" : `${workout.weight}LB`} for{" "}
+			{workout.reps} reps for {workout.sets} sets!{" "}
+			<span className="deleteWorkout">&times;</span>
+		</li>
 	));
+
+	// const renderWorkoutsTwo = state
 
 	return (
 		<div>
-			<h1>Your Workouts</h1>
-			<div className="workout-list">{renderWorkouts}</div>
+			{console.log(state.workout_sessions)}
+			{props ? renderWorkouts : null}
 		</div>
 	);
 };
 
-export default ShowWorkouts;
+export default WorkoutList;
