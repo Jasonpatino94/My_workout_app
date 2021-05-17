@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import Modal from "react-modal";
 import {deleteWorkout} from "../../services/api";
 import {useSelector, useDispatch} from "react-redux";
+import AddWorkout from "./AddWorkout";
+import WorkoutList from "./WorkoutList";
 
 Modal.setAppElement("#root");
 const WorkoutModal = (props) => {
@@ -9,12 +11,12 @@ const WorkoutModal = (props) => {
 	const state = useSelector((state) => state);
 	const dispatch = useDispatch();
 
-	const handleDeleteWorkout = (workout) => {
+	const handleDeleteWorkout = (ws) => {
 		setModalIsOpen(false);
 
-		deleteWorkout(state.user.id, workout.id).then((data) => data);
+		deleteWorkout(state.user.id, ws.id).then((data) => data);
 
-		dispatch({type: "DELETE_WORKOUT", payload: workout});
+		dispatch({type: "DELETE_WORKOUT", payload: ws});
 	};
 
 	return (
@@ -27,18 +29,14 @@ const WorkoutModal = (props) => {
 				isOpen={modalIsOpen}
 				onRequestClose={() => setModalIsOpen(false)}
 			>
-				{console.log(props)}
 				<button className="close-btn" onClick={() => setModalIsOpen(false)}>
 					x
 				</button>
-				<h1>
-					you did {props.workout.name} with {props.workout.weight} pounds{" "}
-					{props.workout.reps} times, for {props.workout.sets} sets!!
-				</h1>
-				<h4> </h4>
+				<AddWorkout ws={props.ws} />
+				<WorkoutList workouts={props.workouts} />
 
 				<button onClick={() => handleDeleteWorkout(props.workout)}>
-					Delete Workout
+					Delete This Session
 				</button>
 			</Modal>
 		</div>
