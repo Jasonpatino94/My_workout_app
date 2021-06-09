@@ -13,7 +13,7 @@ const WorkoutList = (props) => {
 		dispatch({type: "DELETE_WORKOUT", payload: workout});
 	};
 
-	const renderWorkouts = props.workouts.map((workout) => (
+	const renderWorkouts = state.workouts.map((workout) => (
 		<li
 			onClick={() => handleDelete(workout)}
 			key={workout.id}
