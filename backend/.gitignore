@@ -70,19 +70,3 @@ yarn-debug.log*
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
-
-### react ###
-.DS_*
-*.log
-logs
-**/*.backup.*
-**/*.back.*
-
-node_modules
-bower_components
-
-*.sublime*
-
-psd
-thumb
-sketch
